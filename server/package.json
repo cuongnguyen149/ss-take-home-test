@@ -1,0 +1,29 @@
+{
+  "name": "ss-take-home-test",
+  "version": "1.0.0",
+  "description": "A test for nodejs",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "start:dev": "nodemon --exec ts-node -- src/index.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cuongnguyen149/ss-take-home-test.git"
+  },
+  "author": "Cuong Nguyen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cuongnguyen149/ss-take-home-test/issues"
+  },
+  "homepage": "https://github.com/cuongnguyen149/ss-take-home-test#readme",
+  "dependencies": {
+    "apollo-server": "^2.15.1",
+    "graphql": "^15.3.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4",
+    "ts-node": "^8.10.2",
+    "typescript": "^3.9.6"
+  }
+}
