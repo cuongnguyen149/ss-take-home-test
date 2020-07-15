@@ -4,8 +4,9 @@
   "description": "A test for nodejs",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "start:dev": "nodemon --exec ts-node -- src/index.ts"
+    "start": "node dist/index.js",
+    "start:dev": "nodemon --exec ts-node -- src/index.ts",
+    "build": "tsc"
   },
   "repository": {
     "type": "git",
