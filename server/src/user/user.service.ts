@@ -2,7 +2,7 @@ import { IUser } from './user.type';
 import userRepository from './user.repository';
 import { AppError } from '../common/appError';
 import { ERROR_CODE } from '../common/errors';
-
+import passwordUtil from '../common/passwordUtil'
 const doesEmailExisted = async (email: string):
   Promise<boolean> => {
   const user = await userRepository.getByEmail(email);
@@ -10,10 +10,11 @@ const doesEmailExisted = async (email: string):
 }
 
 const createUser = async (user: IUser): Promise<IUser> => {
-  const { email } = user;
+  const { email, password } = user;
   if (await doesEmailExisted(email)) {
     throw new AppError(ERROR_CODE.EMAIL_ALREADY_EXISTED);
   }
+  user.password = passwordUtil.encrypt(password);
   return await userRepository.createUser(user);;
 }
 

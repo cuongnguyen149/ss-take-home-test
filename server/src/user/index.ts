@@ -11,7 +11,8 @@ const init = async () => {
   const server = new ApolloServer({
     schema: applyMiddleware(
       buildFederatedSchema([{ typeDefs, resolvers }]),
-    )
+    ),
+    //TODO should enhance the formatError when return error.
   });
 
   server.listen({ port }).then(({ url }) => {
