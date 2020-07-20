@@ -4,9 +4,25 @@
   "description": "A test for nodejs",
   "main": "index.js",
   "scripts": {
-    "start": "node dist/index.js",
-    "start:dev": "nodemon --exec ts-node -- src/index.ts",
+    "start:dev": "concurrently -k npm:start:dev:*",
+    "start:dev:gateway": "wait-on tcp:4001 && nodemon --exec ts-node -- src/index.ts",
+    "start:dev:user": "nodemon --exec ts-node -- src/user/index.ts",
+    "start": "npm run build && concurrently -k npm:server:*",
+    "server:user": "node dist/user/index.js",
+    "server:gateway": "wait-on tcp:4001 && node dist/index.js",
     "build": "tsc"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged && npm run build"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.ts": [
+      "eslint --fix",
+      "prettier --write",
+      "git add"
+    ]
   },
   "repository": {
     "type": "git",
@@ -19,12 +35,25 @@
   },
   "homepage": "https://github.com/cuongnguyen149/ss-take-home-test#readme",
   "dependencies": {
+    "@apollo/federation": "^0.17.0",
+    "@apollo/gateway": "^0.17.0",
     "apollo-server": "^2.15.1",
-    "graphql": "^15.3.0"
+    "apollo-server-express": "^2.15.1",
+    "graphql": "^15.3.0",
+    "graphql-middleware": "^4.0.2",
+    "graphql-scalars": "^1.2.2",
+    "mongoose": "^5.9.24"
   },
   "devDependencies": {
+    "@types/mongoose": "^5.7.32",
+    "concurrently": "^5.2.0",
+    "eslint": "^7.4.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-prettier": "^3.1.4",
     "nodemon": "^2.0.4",
+    "prettier": "^2.0.5",
     "ts-node": "^8.10.2",
-    "typescript": "^3.9.6"
+    "typescript": "^3.9.6",
+    "wait-on": "^5.1.0"
   }
 }
