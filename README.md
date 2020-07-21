@@ -1,10 +1,10 @@
 ## Set up
-You need to be install the softwares below:
-* NodeJs (version 10.0 or above)
-* Mongodb
+You need to install the softwares below:
+* NodeJs (version 10.0 or above).
+* Mongodb.
 ## How to run project:
 1. Clone source code.
-2. Open the terminal at sourcode folder.
+2. Open the terminal at source code folder.
 3. Then run command below:\
 ```cd server && npm install && npm start```\
 You will see the inform that :```Server ready at http://localhost:3000/graphql```.\
@@ -274,7 +274,9 @@ The ```User collection``` should has values below:
   }
 ]
 ```
+## 4. Tell us how you would deploy your solution in a scalable, high available and cost-effective way on AWS (or other cloud providers in case you don’t know AWS).
 I believe when we develop an application we have already planned for how many users that application will be serviced. Then we can choose the equivalent deploy system. I used to work with 2 applications, 1 target for 20.000 users and the other target for 2.000.000 users. (Both used microservice architecture).
+
 #### With application service 20.000 users we used Lambda (NodeJs) for development. The main stack we used below:
 * Serveless
 * Lambda (NodeJs)
@@ -321,4 +323,6 @@ We had a health check API for checking that server is alive or not. Every 2 seco
 
 In this project I did not implement any deployment process and config. Just know how out system work.
 
-That's all my knowledged about deployment and system. Thanks for reading.
+That's all my knowledge about deployment and system. Thanks for reading.
+
+#### One more thing, I skipped the React test because I am not familiar with React and it took a lot of time than I expected. My apology.
