@@ -1,3 +1,41 @@
+## Set up
+You need to be install the softwares below:
+* NodeJs (version 10.0 or above)
+* Mongodb
+## How to run project:
+1. Clone source code.
+2. Open the terminal at sourcode folder.
+3. Then run command below:\
+```cd server && npm install && npm start```\
+You will see the inform that :```Server ready at http://localhost:3000/graphql```.\
+Then you can you to browser and test with query below:
+#### Create user: 
+```
+mutation {
+  createUser(userInput:{
+    firstName: "firstName"
+    lastName: "lastName"
+    email: "test@gmail.com"
+    hearFromSource: FRIENDS
+    password: "123123"
+    isAgreeWithTerm: true
+  }){
+    email
+    firstName
+    createdAt
+  } 
+}
+```
+#### Get user:
+```
+query {
+  user(id:String!) {
+    firstName
+    lastName
+  }
+}
+```
+
 ## 3. The purpose of this item is to evaluate your understanding of Role Based Access Control. You don’t need to implement any code for this.
 ### - Show us your understanding of Role Based Access Control.
 I did some research and here is some information about RBAC.
@@ -245,6 +283,7 @@ I believe when we develop an application we have already planned for how many us
 * SNS
 * SQS
 * SSM
+* S3
 * Twilio
 * XRay
 * Jenkin
